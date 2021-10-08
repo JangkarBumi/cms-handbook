@@ -1,0 +1,83 @@
+URL_FACEBOOK: https://www.facebook.com/Bias-AI-104074461657477
+URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+URL_GITHUB_MAIN: https://github.com/BiasAIPublic
+URL_INSTAGRAM: https://www.instagram.com/perfectcampuses/
+URL_LANDING: https://getbiasai.com/
+URL_LINKEDIN: https://www.linkedin.com/company/biasai
+URL_STUDENT: https://www.avancevl.com/students
+collections:
+  default:
+    output: true
+    permalink: /:path
+  pages:
+    output: true
+    permalink: /:path
+description: "\u52A0\u901F\u5B75\u5316\u65B0\u5275 Startup Incubator"
+exam_submit_form_url: https://forms.gle/LW9UAo2YWpUrgFLq6
+exclude:
+- _main/
+- i18n.py
+- Gemfile
+- Gemfile.lock
+- README.md
+- Pipfile
+- Pipfile.lock
+- get-pip.py
+- run.sh
+google_analytics: UA-140600686-5
+i18n:
+  attrname: name
+  default_lang: en
+  falias: _pages
+  mainPath: ./_main
+  tag: a
+job_form_url: https://2bs9m2ujxlo.typeform.com/to/EtSnVwYW
+job_form_url_en: https://2bs9m2ujxlo.typeform.com/to/EtSnVwYW
+job_form_url_zh-cn: https://2bs9m2ujxlo.typeform.com/to/EtSnVwYW
+job_form_url_zh-tw: https://2bs9m2ujxlo.typeform.com/to/EtSnVwYW
+link_engineering: /engineering/engineering.html
+link_fullstack_training: /people/fullstack_training.html
+link_jd_benefits: /people/benefits.html
+link_jd_culture: /principles/principles.html
+link_jd_expectations: /principles/values.html
+link_jd_interview_process: /recruit/interview_process.html
+link_jd_projectfee: /people/projectbased_level.html
+link_jd_salary: /people/engineering_level.html
+link_onboarding: /recruit/onboarding.html
+link_sample_fullstackdev: /recruit/sample_fullstackdev.html
+link_team: /team.html
+locales:
+  en:
+    baseurl: /en
+    lang: en
+    name: English
+  id:
+    baseurl: /id
+    lang: id
+    name: Bahasa Indonesia
+  my:
+    baseurl: /my
+    lang: my
+    name: Orang Malaysia
+  vi:
+    baseurl: /vi
+    lang: vi
+    name: Vietnamese
+  zh-cn:
+    baseurl: /zh-cn
+    lang: zh-cn
+    name: "\u7B80\u4F53"
+  zh-tw:
+    baseurl: /zh-tw
+    lang: zh-tw
+    name: "\u7E41\u9AD4"
+plugins:
+- jemoji
+product_name: BiasAI
+sass:
+  sass_dir: _sass
+splash_btn_text: "\u67E5\u770B\u8077\u7F3A"
+theme: jekyll-theme-cayman
+title: BiasAI
+user_d: D
+user_g: G

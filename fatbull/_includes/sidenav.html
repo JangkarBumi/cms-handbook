@@ -1,0 +1,118 @@
+{% if site.data.navigation.toc[0] %}
+  {% for item in site.data.navigation.toc %}
+    <div class="navs">
+      <b>
+        {% assign lang = page.lang | prepend:"/" %}
+        {% assign item_url = item.url | prepend: lang %}
+        {% assign urls = item.url | prepend: lang %}
+        {% assign url_first_lang = page.url | split: "/" %}
+        {% if url_first_lang[1] != page.lang %}
+          {% assign item_url = item.url %}
+          {% assign urls = item.url %}
+        {% endif %}
+        {% if item.title[page.lang] == blank %}
+          {% assign item_title = item.title[site.i18n.default_lang] %}
+        {% else %}
+          {% assign item_title = item.title[page.lang] %}
+        {% endif %}
+        {% if page.url == item_url %}
+          <a href="{{ site.baseurl }}{{ urls }}" class="active thisa">{{ item_title }}</a>
+        {% else %}
+          <a href="{{ site.baseurl }}{{ urls }}" class="nav">{{ item_title }}</a>
+        {% endif %}
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      {% if item.subfolderitems[0] %}
+        {% for entry in item.subfolderitems %}
+          <ul>
+            {% assign lang = page.lang | prepend:"/" %}
+            {% assign item_url = entry.url | prepend: lang %}
+            {% assign urls = entry.url | prepend: lang %}
+            {% assign url_first_lang = page.url | split: "/" %}
+            {% if url_first_lang[1] != page.lang %}
+              {% assign item_url = entry.url %}
+              {% assign urls = entry.url %}
+            {% endif %}
+            {% if entry.page[page.lang] == blank %}
+              {% assign entry_title = entry.page[site.i18n.default_lang] %}
+            {% else %}
+              {% assign entry_title = entry.page[page.lang] %}
+            {% endif %}
+            <li>
+              <b>
+                {% if page.url == item_url %}
+                  <a href="{{ site.baseurl }}{{ urls }}" class="active thisa">{{ entry_title }}</a>
+                {% else %}
+                  <a href="{{ site.baseurl }}{{ urls }}" class="nav">{{ entry_title }}</a>
+                {% endif %}
+                {% if entry.subsubfolderitems[0] %}
+                  <i class="material-icons">keyboard_arrow_right</i>
+                {% endif %}
+              </b>
+              {% if entry.subsubfolderitems[0] %}
+                <ul>
+                  {% for subentry in entry.subsubfolderitems %}
+                    {% assign lang = page.lang | prepend:"/" %}
+                    {% assign item_url= subentry.url | prepend: lang %}
+                    {% assign urls = subentry.url | prepend: lang %}
+                    {% assign url_first_lang = page.url | split: "/" %}
+                    {% if url_first_lang[1] != page.lang %}
+                      {% assign item_url = subentry.url %}
+                      {% assign urls = subentry.url %}
+                    {% endif %}
+                    {% if subentry.page[page.lang] == blank %}
+                      {% assign subentry_title = subentry.page[site.i18n.default_lang] %}
+                    {% else %}
+                      {% assign subentry_title = subentry.page[page.lang] %}
+                    {% endif %}
+                    <li>
+                      <b>
+                        {% if page.url == item_url %}
+                          <a href="{{ site.baseurl }}{{ urls }}" class="active thisa">{{ subentry_title }}</a>
+                        {% else %}
+                          <a href="{{ site.baseurl }}{{ urls }}" class="nav">{{ subentry_title }}</a>
+                        {% endif %}
+                        {% if subentry.subsubsubfolderitems[0] %}
+                          <i class="material-icons">keyboard_arrow_right</i>
+                        {% endif %}
+                      </b>
+                      {% if subentry.subsubsubfolderitems[0] %}
+                        <ul>
+                          {% for subsubentry in subentry.subsubsubfolderitems %}
+                            {% assign lang = page.lang | prepend:"/" %}
+                            {% assign item_url= subsubentry.url | prepend: lang %}
+                            {% assign urls = subsubentry.url | prepend: lang %}
+                            {% assign url_first_lang = page.url | split: "/" %}
+                            {% if url_first_lang[1] != page.lang %}
+                              {% assign item_url = subsubentry.url %}
+                              {% assign urls = subsubentry.url %}
+                            {% endif %}
+                            {% if subsubentry.page[page.lang] == blank %}
+                              {% assign subsubentry_title = subsubentry.page[site.i18n.default_lang] %}
+                            {% else %}
+                              {% assign subsubentry_title = subsubentry.page[page.lang] %}
+                            {% endif %}
+                            <li>
+                              <b>
+                                {% if page.url == item_url %}
+                                  <a href="{{ site.baseurl }}{{ urls }}" class="active thisa">{{ subsubentry_title }}</a>
+                                {% else %}
+                                  <a href="{{ site.baseurl }}{{ urls }}" class="nav">{{ subsubentry_title }}</a>
+                                {% endif %}
+                              </b>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          </ul>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endif %}

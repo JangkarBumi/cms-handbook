@@ -1,0 +1,495 @@
+---
+---
+
+@import "materialize";
+@import "{{ site.theme }}";
+
+// Header
+$sub-color: #969696;
+$head-color: #FFFFFF;
+$header-background: #181818;
+
+// Text
+$background-color: #000000;
+$text-color: #FFFFFF;
+$text-hover: #FFFFFF;
+$paragraph-color: #D0D0D0;
+
+// Link
+$link-color: #E339D5;
+$link-hover: #FFFFFF;
+$link-background: #E339D5;
+
+// Button
+$button-text-color: #FFFFFF;
+$button-text-hover: #FFFFFF;
+$background-hover: #E339D5;
+$border-color: #FFFFFF;
+$border-hover: #E339D5;
+// Button Header
+$background-header-hover: #E339D5;
+$border-header-color: #FFFFFF;
+$border-header-hover: #E339D5;
+$button-text-header-color: #FFFFFF;
+$button-text-header-hover: #FFFFFF;
+
+// Language Button
+$text-lang: #FFFFFF;
+$lang-background: #E339D5;
+$text-lang-drop: #000000;
+$text-lang-hover: #E339D5;
+
+// Site Nav
+$text-nav: #FFFFFF;
+$text-nav-hover: #E339D5;
+$text-nav-active: #E339D5;
+$side-background: #181818;
+$hamburger: #FFFFFF;
+
+body {
+    background-color: $background-color;
+}
+.page-header {
+    background-color: $header-background;
+    background-image: none;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+    color: $text-color;
+    font-weight: 600;
+}
+.project-tagline {
+    color: $sub-color;
+}
+.project-name {
+    color: $head-color;
+}
+.btn#page-btn {
+    color: $button-text-color;
+    border-color: $border-color;
+    background-color: transparent;
+
+    &:hover {
+        color: $button-text-hover;
+        border-color: $border-hover;
+        background-color: $background-hover;
+    }
+}
+.btn#header-btn {
+    color: $button-text-header-color;
+    border-color: $border-header-color;
+    border-width: 2px;
+    background-color: transparent;
+
+    &:hover {
+        color: $button-text-header-hover;
+        border-color: $border-header-hover;
+        background-color: $background-header-hover;
+    }
+}
+.main-nav {
+    padding-top: 30px;
+}
+.active {
+    color: #fc6969;
+}
+a {
+    color: $link-color;
+    border-bottom: 3px solid $link-color;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: $link-color;
+    font-weight: 600;
+    position: relative;
+    transition: background-color 120ms;
+}
+a.lang {
+    color: $text-lang-drop;
+    text-decoration: none;
+    border-bottom: none;
+
+    &:hover {
+        background-color: transparent;
+        border-bottom: 3px solid $text-lang-hover;
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+        border-bottom-color: $text-lang-hover;
+    }
+}
+a.nav {
+    text-decoration: none;
+    border-bottom: none;
+    color: $text-nav;
+}
+a:hover {
+    background-color: $link-background;
+    color: $link-hover;
+    text-decoration: none;
+}
+a:active {
+    color: $text-color;
+    border-bottom: 3px solid $border-color;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: $border-color;
+}
+.main-content {
+    color: $paragraph-color;
+}
+.main-content pre {
+    background-color: $paragraph-color;
+}
+.main-content hr {
+    border: $paragraph-color;
+}
+.page-header {
+    position: relative;
+}
+/**sidenav**/
+
+.nav-but {
+    height: 35px;
+    position: relative;
+}
+a.sidenav-trigger.top-nav {
+    text-align: left;
+    top: 10px;
+    padding: 5px;
+    left: 0;
+    float: left;
+    z-index: 2;
+    border: none;
+    border-radius: 3px;
+    height: 35px;
+
+    .material-icons{
+        color: $hamburger
+    }
+}
+a.sidenav-trigger.top-nav:hover {
+    background-color: transparent;
+}
+a.sidenav-trigger.top-nav:active {
+    background-color: transparent;
+    color: $text-nav-active;
+}
+.sidenav-style {
+    background-color: $side-background;
+    padding-bottom: 100px;
+}
+// .sidenav .dropdown-content .material-icons {
+//     display: none;
+// }
+.nav-list ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+// // .sidenav-style > .nav-list ul a {
+// //     height: auto;
+// //     line-height: normal;
+// //     padding: 8px 25px 8px 25px;
+// //     display: block;
+// //     color: #ffffff;
+// //     display: flex;
+// //     align-items: center;
+// // }
+.nav-list ul ul a {
+    // padding-left: 60px;
+    color: $text-nav;
+    font-size: 13px;
+}
+.nav-list ul ul a.active {
+    padding-left: 46px;
+}
+// .sidenav-style > .nav-list ul ul ul a {
+//     padding-left: 70px;
+//     font-size: 12px;
+// }
+// .sidenav-style > .nav-list b {
+//     display: block;
+//     border-top: 1px solid rgba(255, 255, 255, 0.1);
+//     // border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+// }
+// .sidenav-style > .nav-list b a:hover,
+// .sidenav-style li > a:hover {
+//     background-color: rgba(255, 255, 255, 0.1);
+// }
+.nav-list ul a img,
+.nav-list b a img {
+    margin-right: 5px;
+}
+// .sidenav-style > .nav-list a.active {
+//     background-color: rgba(255, 255, 255, 0.1);
+// }
+// .sidenav-style > .nav-list b a {
+//     height: auto;
+//     padding: 8px 25px 8px 15px;
+//     line-height: normal;
+//     display: block;
+//     font-size: 14px;
+//     color: #ffffff;
+//     display: flex;
+//     align-items: center;
+// }
+/*side menu style*/
+.nav-list .navs {
+    overflow: auto;
+}
+.nav-list i.material-icons {
+    float: right;
+    line-height: normal;
+    cursor: pointer;
+    color: $text-nav;
+}
+.nav-list i.material-icons:hover {
+    color: $text-nav-hover;
+}
+.nav-list li {
+    // height: 30px;
+    overflow: hidden;
+}
+
+.nav-list ul a {
+    font-size: 14px;
+    padding: 0px 0px 0px 10px;
+    margin-bottom: 5px;
+    // display: inline-flex;
+    // text-overflow: ellipsis;
+    width: 152px;
+}
+.nav-list ul a:hover {
+    background-color: transparent;
+    color: $text-nav-hover;
+}
+.nav-list b a {
+    height: auto;
+    padding: 0px 0px 0px 10px;
+    border: none;
+    flex-grow: 2;
+    font-size: 14px;
+    display: inline-flex;
+}
+.nav-list ul {
+    margin: 5px 0;
+}
+.nav-list ul ul {
+    margin-top: 0;
+}
+.nav-list ul b a {
+    padding: 0px 0px 0px 20px;
+}
+.nav-list ul ul a {
+    padding-left: 48px;
+    border: none;
+    background-color: transparent;
+}
+
+.nav-list ul ul ul a {
+    padding-left: 70px;
+    color: $text-nav
+}
+.nav-list ul ul ul a.active {
+    border-left: 2px solid $text-nav-active;
+    background-color: transparent;
+    padding-left: 68px;
+}
+.nav-list b a.active {
+    border-left: 2px solid $text-nav-active;
+    background-color: transparent;
+    color: $text-nav-active;
+}
+.nav-list b a:hover {
+    background-color: transparent;
+    color: $text-nav-hover;
+}
+
+// .nav-list b a.active:hover {
+//     border-left: 2px solid #e6375a;
+//     background-color: transparent;
+//     color: #ffffff;
+// }
+.nav-list b {
+    display: flex;
+    border-top: none;
+    align-items: center;
+}
+.nav-list ul {
+    display: none;
+}
+/*mobile side main menu*/
+.sidenav-style > .nav-list .navs {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    // border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.side-navbar {
+    padding-bottom: 30px;
+}
+.sidenav li {
+    line-height: normal;
+}
+.sidenav .nav-list ul b a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.sidenav b a.active {
+    border-left: 4px solid $text-nav-active;
+}
+.sidenav .nav-list i.material-icons {
+    float: right;
+    margin-right: 10px;
+    font-size: 32px;
+}
+.sidenav .nav-list ul ul ul a.active {
+    border-left: 4px solid $text-nav-active;
+    background-color: transparent;
+    padding-left: 66px;
+}
+.sidenav .nav-list ul ul a.active {
+    padding-left: 44px;
+}
+/*drop language*/
+.sidenav-header {
+    padding: 28px 25px;
+}
+.sidenav-header > h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.87);
+}
+.sidenav-header {
+    overflow: auto;
+}
+.droplang {
+    float: left;
+    font-size: 12px;
+    // border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0.3rem 0.6rem;
+    margin: 0;
+    background-color: $lang-background;
+    color: $text-lang;
+}
+.droplang:active {
+    color: $text-lang-hover;
+    border: none;
+}
+
+.droplang:hover {
+    color: $text-lang-hover;
+    border-color: $text-lang-hover;
+}
+.dropdown-content {
+    border-radius: 3px;
+    height: auto !important;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.dropdown-content li {
+    min-height: auto;
+}
+.dropdown-content li a {
+    font-size: 12px;
+}
+.dropdown-content {
+    background-color: $lang-background;
+    li > a {
+        color: $text-lang;
+    }
+    li > a:hover {
+        padding-bottom: 11px;
+    }
+    li:hover,
+    li.active {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.nav-droplang {
+    float: right;
+    padding: 0.3rem 0.6rem;
+    background-color: $lang-background;
+}
+.nav-but .dropdown-content {
+    background-color: $lang-background;
+}
+
+/*main*/
+.container-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+.maincontent {
+    width: 75%;
+    padding: 0 25px;
+}
+.side-navbar {
+    width: 20%;
+    padding: 0 0 0 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+.site-footer {
+    margin-top: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+nav {
+    background-color: transparent;
+    line-height: normal;
+}
+.top-nav {
+    display: none;
+}
+@media screen and (min-width: 64em) {
+    .main-content {
+        padding: 2rem 1rem;
+        max-width: 72rem;
+    }
+    .top-nav-bar {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+@media screen and (max-width: 64em) and (min-width: 42em) {
+    // .top-nav-bar {
+    //     padding-top: 0;
+    //     padding-bottom: 0;
+    // }
+}
+@media screen and (max-width: 64em) {
+    .top-nav-bar {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .top-nav-bar {
+        display: none;
+    }
+    .btn.droplang {
+        width: auto;
+    }
+    .nav-droplang {
+        display: none;
+    }
+    .maincontent {
+        width: 100%;
+    }
+    .side-navbar {
+        display: none;
+    }
+    .top-nav {
+        display: block;
+    }
+}
+// @media screen and (min-width: 64em) {
+
+// }

@@ -1,0 +1,218 @@
+handbooks:
+    - id: 1
+      product_name: "FatBull"
+      path: "fatbull"
+      # TITLE: FATBULL
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://myfatbull.com/
+      URL_FACEBOOK: https://www.facebook.com/myfatbull
+      URL_LINKEDIN: https://www.linkedin.com/company/fatbull/
+      URL_INSTAGRAM: https://www.instagram.com/myfatbull/
+      URL_GITHUB_MAIN: https://github.com/FatBullPublic
+    - id: 2
+      product_name: "ZopShop"
+      path: "zopshop"
+      # TITLE: ZOPSHOP
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://www.myzopshop.com/
+      URL_FACEBOOK: https://www.facebook.com/Zop-Shop-102897075304937
+      URL_LINKEDIN: https://www.linkedin.com/company/my-zop-shop
+      URL_INSTAGRAM: https://www.instagram.com/myfatbull/
+      URL_GITHUB_MAIN: https://github.com/ZopshopDev
+    - id: 3
+      product_name: "FatGoat"
+      path: "fatgoat"
+      # TITLE: FATGOAT
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getfatgoat.com/
+      URL_FACEBOOK: https://www.facebook.com/FatGoat-109039754777179
+      URL_LINKEDIN: https://www.linkedin.com/company/fatgoat
+      URL_INSTAGRAM: https://www.instagram.com/myfatbull/
+      URL_GITHUB_MAIN: https://github.com/FatGoatPublic
+    - id: 4
+      product_name: "Sari"
+      path: "sari"
+      # TITLE: SARI
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getsari.com/
+      URL_FACEBOOK: https://www.facebook.com/FatGoat-109039754777179
+      URL_LINKEDIN: https://www.linkedin.com/company/fatgoat
+      URL_INSTAGRAM: https://www.instagram.com/myfatbull/
+      URL_GITHUB_MAIN: https://github.com/FatGoatPublic
+    - id: 5
+      product_name: "BiasAI"
+      path: "biasai"
+      # TITLE: BIAS AI
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getbiasai.com/
+      URL_FACEBOOK: https://www.facebook.com/Bias-AI-104074461657477
+      URL_LINKEDIN: https://www.linkedin.com/company/biasai
+      URL_INSTAGRAM: https://www.instagram.com/perfectcampuses/
+      URL_GITHUB_MAIN: https://github.com/BiasAIPublic
+    - id: 6
+      product_name: "Align"
+      path: "align"
+      # TITLE: ALIGN
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getalignapp.com/
+      URL_FACEBOOK: https://www.facebook.com/Align-100573531886964
+      URL_LINKEDIN: https://www.linkedin.com/company/alignapp
+      URL_INSTAGRAM: https://www.instagram.com/perfectcampuses/
+      URL_GITHUB_MAIN: https://github.com/AlignPublic
+    - id: 7
+      product_name: "PerfectScore"
+      path: "perfectscore"
+      # TITLE: PERFECT SCORE
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getperfectscore.com/
+      URL_FACEBOOK: https://www.facebook.com/GetPerfectScore
+      URL_LINKEDIN: https://www.linkedin.com/company/perfectscore/
+      URL_INSTAGRAM: https://www.instagram.com/perfectcampuses/
+      URL_GITHUB_MAIN: https://github.com/PerfectScorePublic
+    - id: 8
+      product_name: "Fayre"
+      path: "fayre"
+      # TITLE: FAYRE
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getfatgoat.com/
+      URL_FACEBOOK: https://www.facebook.com/Fayre-100560608983705
+      URL_LINKEDIN: https://www.linkedin.com/company/buyfayre
+      URL_INSTAGRAM: https://www.instagram.com/myfatbull/
+      URL_GITHUB_MAIN: https://github.com/FayrePublic
+    - id: 9
+      product_name: "Worktime"
+      path: "worktime"
+      # TITLE: WORKTIME
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getalignapp.com/
+      URL_FACEBOOK: https://www.facebook.com/Worktime-107955191567000
+      URL_LINKEDIN: https://www.linkedin.com/company/getworktime
+      URL_INSTAGRAM: https://www.instagram.com/perfectcampuses/
+      URL_GITHUB_MAIN: https://github.com/WorktimePublic
+    - id: 10
+      product_name: "GirlFriday"
+      path: "girlfriday"
+      # TITLE: GIRL FRIDAY
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getalignapp.com/
+      URL_FACEBOOK: https://www.facebook.com/GirlFriday-107416364955016
+      URL_LINKEDIN: https://www.linkedin.com/company/girlfridayapp
+      URL_INSTAGRAM: '-'
+      URL_GITHUB_MAIN: https://github.com/GirlFridayPublic
+    - id: 11
+      product_name: "Stride"
+      path: "stride"
+      # TITLE: Stride
+      EMAIL: hr@avancevl.com
+      URL_STUDENT: https://www.avancevl.com/students
+      URL_GITHUB: https://github.com/avancevl/avancevl.github.io
+      URL_LANDING: https://getalignapp.com/
+      URL_FACEBOOK: https://www.facebook.com/Stride-100466892328016
+      URL_LINKEDIN: https://www.linkedin.com/company/strideapp
+      URL_INSTAGRAM: '-'
+      URL_GITHUB_MAIN: https://github.com/StridePublic
+
+theme: jekyll-theme-cayman
+plugins:
+    - jemoji
+title: FatGoat
+description: All Remote Startup
+google_analytics: UA-140600686-5
+splash_btn_text: 查看職缺
+job_form_url: https://2bs9m2ujxlo.typeform.com/to/EtSnVwYW
+job_form_url_en: "https://2bs9m2ujxlo.typeform.com/to/EtSnVwYW"
+job_form_url_zh-cn: "https://2bs9m2ujxlo.typeform.com/to/EtSnVwYW"
+job_form_url_zh-tw: "https://2bs9m2ujxlo.typeform.com/to/EtSnVwYW"
+exam_submit_form_url: https://forms.gle/LW9UAo2YWpUrgFLq6
+link_jd_culture: "/principles/principles.html"
+link_jd_benefits: "/people/benefits.html"
+link_jd_salary: "/people/engineering_level.html"
+link_jd_projectfee: "/people/projectbased_level.html"
+link_jd_interview_process: "/recruit/interview_process.html"
+link_jd_expectations: "/principles/values.html"
+link_team: "/team.html"
+link_onboarding: "/recruit/onboarding.html"
+link_fullstack_training: "/people/fullstack_training.html"
+link_sample_fullstackdev: "/recruit/sample_fullstackdev.html"
+link_engineering: "/engineering/engineering.html"
+user_g: G
+user_d: D
+exclude:
+    - _main/
+    - i18n.py
+    - Gemfile
+    - Gemfile.lock
+    - README.md
+    - Pipfile
+    - Pipfile.lock
+    - get-pip.py
+    - run.sh
+#https://github.com/letrastudio/jekyll-i18n/blob/master/_config.yml
+sass:
+    sass_dir: _sass
+locales:
+    en:
+        baseurl: "/en"
+        name: English
+        lang: en
+    zh-tw:
+        baseurl: "/zh-tw"
+        name: 繁體
+        lang: zh-tw
+    zh-cn:
+        baseurl: /zh-cn
+        name: 简体
+        lang: zh-cn
+    my:
+        baseurl: /my
+        name: Orang Malaysia
+        lang: my
+    id:
+        baseurl: /id
+        name: Bahasa Indonesia
+        lang: id
+    vi:
+        baseurl: /vi
+        name: Vietnamese
+        lang: vi
+collections:
+    pages:
+        output: true
+        permalink: "/:path"
+    default:
+        output: true
+        permalink: "/:path"
+# defaults:
+#     - scope:
+#           path: "_pages/default"
+#       values:
+#           permalink: "/:path"
+# permalink: "/:path"
+
+i18n:
+    mainPath: "./_main"
+    tag: "a"
+    attrname: "name"
+    falias: "_pages"
+    default_lang: "en"
+

@@ -1,0 +1,4778 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140600686-5"></script>
+      <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-140600686-5');
+            </script>
+    
+    <meta charset="UTF-8">
+    <title>网页可靠性 | Fatgoat手册</title>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="网页可靠性" />
+<meta property="og:locale" content="zh_cn" />
+<meta name="description" content="我们如何监控并解决网页的错误" />
+<meta property="og:description" content="我们如何监控并解决网页的错误" />
+<link rel="canonical" href="http://localhost:4000/zh-cn/engineering/devops_sre" />
+<meta property="og:url" content="http://localhost:4000/zh-cn/engineering/devops_sre" />
+<meta property="og:site_name" content="Fatgoat" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="网页可靠性" />
+<script type="application/ld+json">
+{"headline":"网页可靠性","url":"http://localhost:4000/zh-cn/engineering/devops_sre","description":"我们如何监控并解决网页的错误","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="#157878" name="theme-color">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://static.wixstatic.com/media/877134_2808539891304c078530373769485c0d%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/877134_2808539891304c078530373769485c0d%7Emv2.png" rel="shortcut icon" type="image/png"> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="/assets/img/site.webmanifest">
+    <!-- <link rel="mask-icon" href="/assets/img/safari-pinned-tab.svg" color="#2d89ef"> -->
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="msapplication-config" content="/assets/img/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Compiled and minified CSS -->
+    <script crossorigin="anonymous" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css?v=HEAD">
+
+  </head>
+
+  <body>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          xfbml: true,
+          version: 'v9.0'
+        });
+      };
+
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat" attribution="setup_tool" page_id="108024397337673">
+    </div>
+    <header class="page-header" role="banner">
+      <div class="nav-but">
+        <a class="sidenav-trigger top-nav" data-target="slide-out" href="#">
+          <i class="material-icons">menu</i>
+        </a>
+        <a class="dropdown-trigger btn droplang nav-droplang" data-target="dropdown2" href="#">
+          <i class="material-icons">language</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul class="dropdown-content" id="dropdown2">
+          
+  
+  <li lang="en" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/en/engineering/devops_sre" class="lang" aria-current="true">English</a>
+      
+    
+  </li>
+
+  
+  <li lang="zh-tw" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/zh-tw/engineering/devops_sre" class="lang" aria-current="true">繁體</a>
+      
+    
+  </li>
+
+  
+  <li lang="zh-cn" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/zh-cn/engineering/devops_sre" class="lang" aria-current="true">简体</a>
+      
+    
+  </li>
+
+  
+  <li lang="my" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/my/engineering/devops_sre" class="lang" aria-current="true">Orang Malaysia</a>
+      
+    
+  </li>
+
+  
+  <li lang="id" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/id/engineering/devops_sre" class="lang" aria-current="true">Bahasa Indonesia</a>
+      
+    
+  </li>
+
+  
+  <li lang="vi" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/vi/engineering/devops_sre" class="lang" aria-current="true">Vietnamese</a>
+      
+    
+  </li>
+
+        </ul>
+      </div>
+
+      <h1 class="project-name">网页可靠性</h1>
+      <h2 class="project-tagline">我们如何监控并解决网页的错误</h2>
+      
+      <a href="/zh-cn/recruit/open_positions.html" class="btn" id="header-btn">查看职缺</a>
+    </header>
+
+    <main class="main-content" id="content" role="main">
+
+      <div class="container-content">
+        <article class="maincontent"><ul>
+  <li>生产监控和故障排除是DevOps / SRE的责任。</li>
+  <li>DevOps负责将问题和错误上报给相关工程师。</li>
+</ul>
+
+<h1 id="工具">工具</h1>
+
+<p>主要工具类别包括：</p>
+
+<ul>
+  <li>
+<strong>版本控制：</strong>跟踪软件版本的工具，无论是手动还是自动。这意味着对版本进行编号，并跟踪配置和存在的任何环境相关性，例如数据库的类型，品牌和版本。操作系统详细信息；甚至是所需的物理或虚拟服务器的类型。此类别与变更管理工具有关。</li>
+  <li>
+<strong>构建和部署：</strong>用于在整个DevOps流程中自动构建和部署软件的工具，包括持续开发和持续集成。</li>
+  <li>
+<strong>功能和非功能测试：</strong>提供自动测试的工具，包括上面列出的最佳实践。测试工具应提供集成的单元，性能和安全性测试服务。目标应该是端到端自动化。</li>
+  <li>
+<strong>供应和变更管理：</strong>用于提供部署软件所需平台的工具，以及监视和记录配置，数据或软件发生的任何变更的工具。这些工具确保无论发生什么情况都可以使系统恢复稳定状态。</li>
+</ul>
+
+<h1 id="最佳做法">最佳做法</h1>
+
+<h2 id="1测试自动化">1.测试自动化</h2>
+
+<p>为了编写高质量的代码，开发人员需要定期测试软件。 DevOps允许进行早期测试，这使开发人员有机会在软件开发过程中而非过程的后期识别和解决问题。</p>
+
+<p>与手动测试相比，自动测试可以更快地执行SDLC（软件开发生命周期）。使用回归测试和负载测试，可以将测试自动化应用于数据库和网络更改，中间件配置以及代码开发。</p>
+
+<p>可以通过执行各种活动来完成测试自动化，例如识别测试场景和案例，选择正确的自动化工具集，设置适当的测试环境，运行测试案例以及分析结果。</p>
+
+<h2 id="2集成配置管理">2.集成配置管理</h2>
+
+<p>配置和变更管理是操作的组成部分。配置管理涉及跨网络，服务器，应用程序，存储和其他托管服务进行的系统范围配置的自动化，监视，管理和维护。</p>
+
+<p>集成的配置管理使开发团队具有更广阔的视野。它允许在软件开发过程中利用现有服务，而不用花费时间和精力从头开始重新发明新服务。</p>
+
+<h2 id="3集成变更管理">3.集成变更管理</h2>
+
+<p>变更管理是一个过程，在其中更改和重新定义配置以满足动态情况和新要求的条件。在配置管理过程中，如果需要进行任何更改，那么更改管理就会进入画面。运营团队就变更可能在更大的范围内暴露出哪些机会和后果以及可能影响到哪些其他系统提供意见。</p>
+
+<h2 id="4持续集成">4.持续集成</h2>
+
+<p>这是DevOps软件开发实践，开发团队会定期更新存储库中的代码更改，然后运行自动构建和测试。持续集成实践使开发人员可以更快，更频繁地进行集成。 CI工具可帮助他们检测新代码和现有代码中的集成挑战，并仅在早期阶段解决它们。因此，CI改善了团队之间的协作，并最终构建了高质量的软件产品。</p>
+
+<h2 id="5持续交付">5.持续交付</h2>
+
+<p>持续交付是DevOps的一种实践，其中新开发的代码由开发人员更新，通过自动和手动测试在不同阶段由QA团队进行测试，一旦案例通过所有测试，便进入生产。它使开发团队可以在短周期内更快，更频繁地构建，测试和发布应用程序。</p>
+
+<p>它可以帮助组织增加交付数量，减少人工工作，将生产过程中发生故障的风险降到最低等。</p>
+
+<h2 id="6持续部署">6.持续部署</h2>
+
+<p>部署过程包含各种子过程，例如代码创建，测试，版本控制，部署，后部署等。在连续部署过程中，一旦代码成功通过了QA中的所有测试用例，代码就会自动部署到生产环境中。 ，UAT和其他环境。许多执行连续部署的工具从阶段到生产都需要最少的人工干预。</p>
+
+<h2 id="7应用程序监视">7.应用程序监视</h2>
+
+<p>无论是将其部署在云还是本地数据中心上，应用程序基础结构监视对于优化应用程序性能都至关重要。如果在发布过程中有bug击中了应用程序，那么它将变成失败。因此，对于开发团队和运营团队而言，考虑主动监视并检查应用程序的性能非常重要。各种工具可用于应用程序监视，这些工具提供了许多与应用程序，基础架构，销售，图形，分析等相关的指标。</p>
+
+<h2 id="8自动化仪表板">8.自动化仪表板</h2>
+
+<p>通过自动仪表板利用DevOps智能。它将提供数据以及每项操作的详细见解和报告，例如运行的测试数量，测试的持续时间，测试失败和成功的数量。它允许查看对数据库和服务器所做的配置更改以及在系统中进行的部署。</p>
+
+<p>仪表板充当集中式枢纽，使运营团队能够获得实时数据见解，从而帮助他们选择正确的自动化工具测试集。此外，还有各种日志，图形和度量标准，使操作团队可以全面了解系统中发生的更改。</p>
+
+</article>
+        <div class="side-navbar side-navbar-down">
+          <div class="nav-list">
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/index" class="nav">介绍</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/team" class="nav"><img class="emoji" title=":couple:" alt=":couple:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f46b.png" height="20" width="20"> 团队</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/product" class="nav"><img class="emoji" title=":building_construction:" alt=":building_construction:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3d7.png" height="20" width="20"> 产品</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/announcements" class="nav"><img class="emoji" title=":new:" alt=":new:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f195.png" height="20" width="20"> 最新公告</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/FAQ" class="nav"><img class="emoji" title=":interrobang:" alt=":interrobang:" src="https://github.githubassets.com/images/icons/emoji/unicode/2049.png" height="20" width="20"> 常见问题</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/principles/principles" class="nav">公司理念</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/principles/expectations" class="nav"><img class="emoji" title=":100:" alt=":100:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4af.png" height="20" width="20"> 团队期望</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/communication" class="nav">有效沟通</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/team_dynamics" class="nav">团队互动</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/meetings" class="nav">会议流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/written_communication" class="nav">书面交流</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/deliverables" class="nav">执行SOP</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/external_meetings" class="nav">对外会议</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/principles/strategy" class="nav"><img class="emoji" title=":chart_with_upwards_trend:" alt=":chart_with_upwards_trend:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c8.png" height="20" width="20"> 执行策略</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/agile" class="nav">敏捷流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/remote" class="nav">远端工作</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/inexperience" class="nav">职场新人</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/principles/management" class="nav"><img class="emoji" title=":pushpin:" alt=":pushpin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cc.png" height="20" width="20"> 管理方式</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/areas_responsibility" class="nav">责任分配</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/management_kpi_okr" class="nav">管理KPI及OKR</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/people/people" class="nav">人资管理</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/compensation" class="nav"><img class="emoji" title=":moneybag:" alt=":moneybag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png" height="20" width="20"> 绩效薪资制度</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/engineering_level" class="nav">全职工程师薪水</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/designer_level" class="nav">全职设计师薪水</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/projectbased_level" class="nav">特案兼职费用</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/benefits" class="nav"><img class="emoji" title=":cookie:" alt=":cookie:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f36a.png" height="20" width="20"> 员工福利</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/team_events" class="nav">团队活动</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/learning_training" class="nav"><img class="emoji" title=":computer:" alt=":computer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png" height="20" width="20"> 学习培训</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/fullstack_training" class="nav">全端培训计划</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/online_resources" class="nav">线上资源</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/bookclub" class="nav">读书会</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/policy_legal" class="nav"><img class="emoji" title=":alarm_clock:" alt=":alarm_clock:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f0.png" height="20" width="20"> 规范及合约</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/nda" class="nav">保密协议</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/ra" class="nav">聘用协议</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/ea" class="nav">员工协议</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/work_hours" class="nav">工作时间</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/pto" class="nav">给假原则</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/workplace_policy" class="nav">职场性骚扰政策</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/reimbursement_policy" class="nav">补充规范</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/onboarding" class="nav"><img class="emoji" title=":memo:" alt=":memo:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png" height="20" width="20"> 入职流程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/general_performance_review" class="nav"><img class="emoji" title=":fire:" alt=":fire:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png" height="20" width="20"> 绩效评估</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/recruit/recruit" class="nav">征才</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/application_data" class="nav"><img class="emoji" title=":bar_chart:" alt=":bar_chart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ca.png" height="20" width="20"> 申请数据</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/open_positions" class="nav"><img class="emoji" title=":handshake:" alt=":handshake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" height="20" width="20"> 职缺</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_fullstackdev" class="nav">全端软体工程师</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_frontenddev" class="nav">前端软体工程师</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_backenddev" class="nav">后端软体工程师</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_projectbased" class="nav">全端软体工程师(特案)</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_designer" class="nav">网页设计师</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_seo" class="nav">SEO/SEM专员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_growthhacker" class="nav">数位行销专案人员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_contentmarketing" class="nav">数位行销内容制作</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_adspecialist" class="nav">付费广告行销专员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_pm_senior" class="nav">资深产品经理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_pm_junior" class="nav">初阶产品经理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_aiml_junior" class="nav">AI,ML初阶专员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_aiml_senior" class="nav">AI,ML高阶专员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_mba" class="nav">MBA实习生</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_exec_assistant" class="nav">行政助理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/interview_process_designer" class="nav"><img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20"> 设计師面試過程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/exam_designer" class="nav">设计师测验</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/interview_process" class="nav"><img class="emoji" title=":hourglass_flowing_sand:" alt=":hourglass_flowing_sand:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f3.png" height="20" width="20"> 工程師面試過程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/survey" class="nav">申请职缺问卷（5分钟）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/takehome" class="nav">选项A：加速申请 - 线上测验（2.5小时）</a>
+                        
+                        
+                          <i class="material-icons">keyboard_arrow_right</i>
+                        
+                      </b>
+                      
+                        <ul>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/webdev" class="nav">线上测验指南</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/exam_rubric" class="nav">测验分数评估</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/sample_fullstackdev" class="nav">全端测验样本</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/sample_frontenddev" class="nav">前端测验样本</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/sample_backenddev" class="nav">后端测验样本</a>
+                                
+                              </b>
+                            </li>
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/whiteboard" class="nav">选项B：传统方案 - 实际白板考试（2天）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/referencecheck" class="nav">选项C：资历查核 - 取代技术测验（5分钟）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/exam_researcher" class="nav"><img class="emoji" title=":microscope:" alt=":microscope:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f52c.png" height="20" width="20"> 研究员面試過程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/exam_qaqc" class="nav"><img class="emoji" title=":wrench:" alt=":wrench:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f527.png" height="20" width="20"> 测试工程师面試過程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/onboarding" class="nav"><img class="emoji" title=":bulb:" alt=":bulb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" height="20" width="20"> 入职训练</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/women" class="nav"><img class="emoji" title=":handshake:" alt=":handshake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" height="20" width="20"> 性别平等就业机会</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/open_sourced" class="nav"><img class="emoji" title=":unlock:" alt=":unlock:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f513.png" height="20" width="20"> 源贡献</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/students" class="nav"><img class="emoji" title=":hatched_chick:" alt=":hatched_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f425.png" height="20" width="20"> 实习生计划 : 学生及职场新人</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/referral" class="nav"><img class="emoji" title=":moneybag:" alt=":moneybag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png" height="20" width="20"> 推荐奖金</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/engineering/engineering" class="nav">工程开发</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/onboarding" class="nav"><img class="emoji" title=":hammer:" alt=":hammer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f528.png" height="20" width="20"> 工程师入职流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/breaking_changes" class="nav">破坏性改变</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/git_rules" class="nav">Git管理规范</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/tech_stack" class="nav"><img class="emoji" title=":zap:" alt=":zap:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png" height="20" width="20"> 技术架构</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/prod_infra" class="nav">生产架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/analytics" class="nav">使用者分析</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/desktop_stack" class="nav">桌面程序架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/realtime_stack" class="nav">即时网路架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/devenv" class="nav">开发环境</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/frontend_stack" class="nav"><img class="emoji" title=":hamburger:" alt=":hamburger:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f354.png" height="20" width="20"> 前端架构</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/ssr" class="nav">SSR前端架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/amp" class="nav">AMP前端架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/pwa" class="nav">PWA前端架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/mobile" class="nav">手机应用程式架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/ui_design" class="nav">UI设计原则</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/html5" class="nav">HTML5架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/internationalization" class="nav">国际化</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/math" class="nav">数学公式前端</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/backend_stack" class="nav"><img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20"> 后端架构</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/referral" class="nav">使用者转介架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/db" class="nav">资料库架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/filtering" class="nav">过滤资料</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/velocity_work" class="nav"><img class="emoji" title=":rocket:" alt=":rocket:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" height="20" width="20"> 工作速率</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/product_cycle" class="nav">产品开发流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/scrum_meeting" class="nav">計畫Scrum會議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/daily_scrum" class="nav">每日報告</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/issue_tracking" class="nav">问题追踪</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/time_tracking" class="nav">纪录工作时间</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/performance_review" class="nav"><img class="emoji" title=":thumbsup:" alt=":thumbsup:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" height="20" width="20"> 绩效评估</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/code_styles" class="nav"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"> 程式代码规范</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/code_review" class="nav"><img class="emoji" title=":bangbang:" alt=":bangbang:" src="https://github.githubassets.com/images/icons/emoji/unicode/203c.png" height="20" width="20"> 程式代码审核</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/qc_testing" class="nav"><img class="emoji" title=":warning:" alt=":warning:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" height="20" width="20"> 品质管制及测试</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/js_testing" class="nav">JS測試</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/frontend_testing" class="nav">前端测试</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/devops_sre" class="active thisa"><img class="emoji" title=":muscle:" alt=":muscle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png" height="20" width="20"> 网页可靠性</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/product/product" class="nav">产品研发流程</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/product/design" class="nav"><img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20"> 设计流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/product/color" class="nav"><img class="emoji" title=":rainbow:" alt=":rainbow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f308.png" height="20" width="20"> 颜色</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/product/font" class="nav"><img class="emoji" title=":a:" alt=":a:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f170.png" height="20" width="20"> 字体</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/product/style_guide" class="nav"><img class="emoji" title=":balloon:" alt=":balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f388.png" height="20" width="20"> 设计表</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/product/roadmap" class="nav"><img class="emoji" title=":oncoming_automobile:" alt=":oncoming_automobile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f698.png" height="20" width="20"> 产品研发流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/product/edtech" class="nav">教育科技</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/growth/growth" class="nav">业务行销流程</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/growth/seo" class="nav"><img class="emoji" title=":rocket:" alt=":rocket:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" height="20" width="20"> 搜寻引擎最佳化</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+
+</div>
+        </div>
+      </div>
+
+
+      <footer class="site-footer">
+        <span class="site-footer-owner">
+          
+          <b>Fatgoat手册</b>
+        </span>
+        <span class="site-footer-owner">
+          
+          全远端孵化新创
+          <a style="text-decoration: none"></a>
+        </span>
+        <span class="site-footer-owner">
+          
+          追踪我们
+          |
+          <a href="https://www.facebook.com/FatGoat-109039754777179" target="_blank">Facebook</a>
+          <!-- | -->
+          <!-- <a href="https://www.instagram.com/myfatbull/" style="text-decoration: none" target="_blank">Instagram</a> -->
+          |
+          <a href="https://www.linkedin.com/company/fatgoat" target="_blank">LinkedIn</a>
+          |
+          <a href="https://github.com/FatGoatPublic" style="text-decoration: none" target="_blank">GitHub</a>
+        </span>
+        <span class="site-footer-owner">
+          
+          <a href="mailto:hr@avancevl.com">联络我们</a>
+        </span>
+        <br>
+        <span class="site-footer-owner">
+          <a href="https://github.com/JangkarBumi/cms-handbook">cms-handbook</a>
+          is maintained by
+          <a href="https://github.com/JangkarBumi">JangkarBumi</a>.</span>
+        <span class="site-footer-credits">This page was generated by
+          <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+    <!--mobile nav list-->
+    <nav class="sidenav sidenav-style side-navbar-down" id="slide-out">
+      <div class="sidenav-header">
+        <a class="dropdown-trigger btn droplang" data-target="dropdown1" href="#">
+          <i class="material-icons">language</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul class="dropdown-content" id="dropdown1">
+          
+  
+  <li lang="en" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/en/engineering/devops_sre" class="lang" aria-current="true">English</a>
+      
+    
+  </li>
+
+  
+  <li lang="zh-tw" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/zh-tw/engineering/devops_sre" class="lang" aria-current="true">繁體</a>
+      
+    
+  </li>
+
+  
+  <li lang="zh-cn" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/zh-cn/engineering/devops_sre" class="lang" aria-current="true">简体</a>
+      
+    
+  </li>
+
+  
+  <li lang="my" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/my/engineering/devops_sre" class="lang" aria-current="true">Orang Malaysia</a>
+      
+    
+  </li>
+
+  
+  <li lang="id" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/id/engineering/devops_sre" class="lang" aria-current="true">Bahasa Indonesia</a>
+      
+    
+  </li>
+
+  
+  <li lang="vi" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/vi/engineering/devops_sre" class="lang" aria-current="true">Vietnamese</a>
+      
+    
+  </li>
+
+        </ul>
+      </div>
+      <div class="nav-list">
+        
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/index" class="nav">介绍</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/team" class="nav"><img class="emoji" title=":couple:" alt=":couple:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f46b.png" height="20" width="20"> 团队</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/product" class="nav"><img class="emoji" title=":building_construction:" alt=":building_construction:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3d7.png" height="20" width="20"> 产品</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/announcements" class="nav"><img class="emoji" title=":new:" alt=":new:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f195.png" height="20" width="20"> 最新公告</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/FAQ" class="nav"><img class="emoji" title=":interrobang:" alt=":interrobang:" src="https://github.githubassets.com/images/icons/emoji/unicode/2049.png" height="20" width="20"> 常见问题</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/principles/principles" class="nav">公司理念</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/principles/expectations" class="nav"><img class="emoji" title=":100:" alt=":100:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4af.png" height="20" width="20"> 团队期望</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/communication" class="nav">有效沟通</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/team_dynamics" class="nav">团队互动</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/meetings" class="nav">会议流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/written_communication" class="nav">书面交流</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/deliverables" class="nav">执行SOP</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/external_meetings" class="nav">对外会议</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/principles/strategy" class="nav"><img class="emoji" title=":chart_with_upwards_trend:" alt=":chart_with_upwards_trend:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c8.png" height="20" width="20"> 执行策略</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/agile" class="nav">敏捷流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/remote" class="nav">远端工作</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/inexperience" class="nav">职场新人</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/principles/management" class="nav"><img class="emoji" title=":pushpin:" alt=":pushpin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cc.png" height="20" width="20"> 管理方式</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/areas_responsibility" class="nav">责任分配</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/principles/management_kpi_okr" class="nav">管理KPI及OKR</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/people/people" class="nav">人资管理</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/compensation" class="nav"><img class="emoji" title=":moneybag:" alt=":moneybag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png" height="20" width="20"> 绩效薪资制度</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/engineering_level" class="nav">全职工程师薪水</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/designer_level" class="nav">全职设计师薪水</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/projectbased_level" class="nav">特案兼职费用</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/benefits" class="nav"><img class="emoji" title=":cookie:" alt=":cookie:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f36a.png" height="20" width="20"> 员工福利</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/team_events" class="nav">团队活动</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/learning_training" class="nav"><img class="emoji" title=":computer:" alt=":computer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png" height="20" width="20"> 学习培训</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/fullstack_training" class="nav">全端培训计划</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/online_resources" class="nav">线上资源</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/bookclub" class="nav">读书会</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/policy_legal" class="nav"><img class="emoji" title=":alarm_clock:" alt=":alarm_clock:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f0.png" height="20" width="20"> 规范及合约</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/nda" class="nav">保密协议</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/ra" class="nav">聘用协议</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/ea" class="nav">员工协议</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/work_hours" class="nav">工作时间</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/pto" class="nav">给假原则</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/workplace_policy" class="nav">职场性骚扰政策</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/people/reimbursement_policy" class="nav">补充规范</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/onboarding" class="nav"><img class="emoji" title=":memo:" alt=":memo:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png" height="20" width="20"> 入职流程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/people/general_performance_review" class="nav"><img class="emoji" title=":fire:" alt=":fire:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png" height="20" width="20"> 绩效评估</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/recruit/recruit" class="nav">征才</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/application_data" class="nav"><img class="emoji" title=":bar_chart:" alt=":bar_chart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ca.png" height="20" width="20"> 申请数据</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/open_positions" class="nav"><img class="emoji" title=":handshake:" alt=":handshake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" height="20" width="20"> 职缺</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_fullstackdev" class="nav">全端软体工程师</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_frontenddev" class="nav">前端软体工程师</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_backenddev" class="nav">后端软体工程师</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_projectbased" class="nav">全端软体工程师(特案)</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_designer" class="nav">网页设计师</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_seo" class="nav">SEO/SEM专员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_growthhacker" class="nav">数位行销专案人员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_contentmarketing" class="nav">数位行销内容制作</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_adspecialist" class="nav">付费广告行销专员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_pm_senior" class="nav">资深产品经理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_pm_junior" class="nav">初阶产品经理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_aiml_junior" class="nav">AI,ML初阶专员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_aiml_senior" class="nav">AI,ML高阶专员</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_mba" class="nav">MBA实习生</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/jd_exec_assistant" class="nav">行政助理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/interview_process_designer" class="nav"><img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20"> 设计師面試過程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/exam_designer" class="nav">设计师测验</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/interview_process" class="nav"><img class="emoji" title=":hourglass_flowing_sand:" alt=":hourglass_flowing_sand:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f3.png" height="20" width="20"> 工程師面試過程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/survey" class="nav">申请职缺问卷（5分钟）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/takehome" class="nav">选项A：加速申请 - 线上测验（2.5小时）</a>
+                        
+                        
+                          <i class="material-icons">keyboard_arrow_right</i>
+                        
+                      </b>
+                      
+                        <ul>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/webdev" class="nav">线上测验指南</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/exam_rubric" class="nav">测验分数评估</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/sample_fullstackdev" class="nav">全端测验样本</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/sample_frontenddev" class="nav">前端测验样本</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-cn/recruit/sample_backenddev" class="nav">后端测验样本</a>
+                                
+                              </b>
+                            </li>
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/whiteboard" class="nav">选项B：传统方案 - 实际白板考试（2天）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/recruit/referencecheck" class="nav">选项C：资历查核 - 取代技术测验（5分钟）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/exam_researcher" class="nav"><img class="emoji" title=":microscope:" alt=":microscope:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f52c.png" height="20" width="20"> 研究员面試過程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/exam_qaqc" class="nav"><img class="emoji" title=":wrench:" alt=":wrench:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f527.png" height="20" width="20"> 测试工程师面試過程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/onboarding" class="nav"><img class="emoji" title=":bulb:" alt=":bulb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" height="20" width="20"> 入职训练</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/women" class="nav"><img class="emoji" title=":handshake:" alt=":handshake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" height="20" width="20"> 性别平等就业机会</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/open_sourced" class="nav"><img class="emoji" title=":unlock:" alt=":unlock:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f513.png" height="20" width="20"> 源贡献</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/students" class="nav"><img class="emoji" title=":hatched_chick:" alt=":hatched_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f425.png" height="20" width="20"> 实习生计划 : 学生及职场新人</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/recruit/referral" class="nav"><img class="emoji" title=":moneybag:" alt=":moneybag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png" height="20" width="20"> 推荐奖金</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/engineering/engineering" class="nav">工程开发</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/onboarding" class="nav"><img class="emoji" title=":hammer:" alt=":hammer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f528.png" height="20" width="20"> 工程师入职流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/breaking_changes" class="nav">破坏性改变</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/git_rules" class="nav">Git管理规范</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/tech_stack" class="nav"><img class="emoji" title=":zap:" alt=":zap:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png" height="20" width="20"> 技术架构</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/prod_infra" class="nav">生产架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/analytics" class="nav">使用者分析</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/desktop_stack" class="nav">桌面程序架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/realtime_stack" class="nav">即时网路架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/devenv" class="nav">开发环境</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/frontend_stack" class="nav"><img class="emoji" title=":hamburger:" alt=":hamburger:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f354.png" height="20" width="20"> 前端架构</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/ssr" class="nav">SSR前端架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/amp" class="nav">AMP前端架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/pwa" class="nav">PWA前端架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/mobile" class="nav">手机应用程式架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/ui_design" class="nav">UI设计原则</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/html5" class="nav">HTML5架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/internationalization" class="nav">国际化</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/math" class="nav">数学公式前端</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/backend_stack" class="nav"><img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20"> 后端架构</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/referral" class="nav">使用者转介架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/db" class="nav">资料库架构</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/filtering" class="nav">过滤资料</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/velocity_work" class="nav"><img class="emoji" title=":rocket:" alt=":rocket:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" height="20" width="20"> 工作速率</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/product_cycle" class="nav">产品开发流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/scrum_meeting" class="nav">計畫Scrum會議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/daily_scrum" class="nav">每日報告</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/issue_tracking" class="nav">问题追踪</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/time_tracking" class="nav">纪录工作时间</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/performance_review" class="nav"><img class="emoji" title=":thumbsup:" alt=":thumbsup:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" height="20" width="20"> 绩效评估</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/code_styles" class="nav"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"> 程式代码规范</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/code_review" class="nav"><img class="emoji" title=":bangbang:" alt=":bangbang:" src="https://github.githubassets.com/images/icons/emoji/unicode/203c.png" height="20" width="20"> 程式代码审核</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/qc_testing" class="nav"><img class="emoji" title=":warning:" alt=":warning:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" height="20" width="20"> 品质管制及测试</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/js_testing" class="nav">JS測試</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/engineering/frontend_testing" class="nav">前端测试</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/engineering/devops_sre" class="active thisa"><img class="emoji" title=":muscle:" alt=":muscle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png" height="20" width="20"> 网页可靠性</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/product/product" class="nav">产品研发流程</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/product/design" class="nav"><img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20"> 设计流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/product/color" class="nav"><img class="emoji" title=":rainbow:" alt=":rainbow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f308.png" height="20" width="20"> 颜色</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/product/font" class="nav"><img class="emoji" title=":a:" alt=":a:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f170.png" height="20" width="20"> 字体</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/product/style_guide" class="nav"><img class="emoji" title=":balloon:" alt=":balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f388.png" height="20" width="20"> 设计表</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/product/roadmap" class="nav"><img class="emoji" title=":oncoming_automobile:" alt=":oncoming_automobile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f698.png" height="20" width="20"> 产品研发流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-cn/product/edtech" class="nav">教育科技</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-cn/growth/growth" class="nav">业务行销流程</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-cn/growth/seo" class="nav"><img class="emoji" title=":rocket:" alt=":rocket:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" height="20" width="20"> 搜寻引擎最佳化</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+
+
+      </div>
+    </nav>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-140600686-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script>
+            //select langauge
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.dropdown-trigger');
+                var instances = M.Dropdown.init(elems);
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('.sidenav');
+                var instances = M.Sidenav.init(elems);
+            });
+            /**side main menu**/
+            $(function(){
+              
+                $('.side-navbar-down .nav-list ul li a.active').parents('ul').siblings("b").find('a').addClass('active');                
+                $('.side-navbar-down .nav-list ul li a.active').parents('ul').addClass('active');
+                // $('.side-navbar-down .nav-list ul li a.active').parents('.navs').addClass('active');
+                $('.side-navbar-down > .nav-list > .navs > b > a.active').parents('.navs').addClass('active');
+                
+                $('.side-navbar-down .nav-list .navs.active').show(function(){
+                    $(this).children('ul').show();
+                    var this_i = $(this).children('b').find("i");
+                    $(this_i).text() == "keyboard_arrow_right" ? $(this_i).text('keyboard_arrow_down').css({color:"#DAFD01"}) : $(this_i).text('keyboard_arrow_right').css({color:"#D0D0D0"});
+                    $(this).children("ul.active").show(function(){
+                        $(this).find("ul").show();
+                        var this_i2 = $(this).find("ul").siblings("b").find("i");
+                        for (let index = 0; index < this_i2.length; index++) {
+                          let element = this_i2[index];
+                          $(element).text() == "keyboard_arrow_right" ? $(element).text('keyboard_arrow_down').css({color:"#DAFD01"}) : $(element).text('keyboard_arrow_right').css({color:"#D0D0D0"});
+                        }
+                    });
+                    
+                })           
+            });
+            $('.side-navbar-down .nav-list a.thisa').click(function(){
+              event.preventDefault();
+              $(this).parent().siblings("ul").toggle( "slow");
+              $(this).siblings("i").text() == "keyboard_arrow_right" ? $(this).siblings("i").text('keyboard_arrow_down').css({color:"#DAFD01"}) : $(this).siblings("i").text('keyboard_arrow_right').css({color:"#D0D0D0"});
+              // $(this).siblings("i").toggle('slow');
+            });
+            $('.side-navbar-down .nav-list b i').click(function(event){
+                event.preventDefault();
+                $(this).text() == "keyboard_arrow_right" ? $(this).text('keyboard_arrow_down').css({color:"#DAFD01"}) : $(this).text('keyboard_arrow_right').css({color:"#D0D0D0"});
+                $(this).parent().siblings("ul").toggle( "slow");
+            });
+            $('.side-navbar-down .nav-list ul i').click(function(event){
+                event.preventDefault();
+                $(this).siblings("ul").toggle( "slow");
+            });
+            $('table').addClass('responsive-table');
+        </script>
+  </body>
+</html>

@@ -1,0 +1,4821 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140600686-5"></script>
+      <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-140600686-5');
+            </script>
+    
+    <meta charset="UTF-8">
+    <title>技術架構 | Zopshop Handbook</title>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="技術架構" />
+<meta property="og:locale" content="zh_tw" />
+<meta name="description" content="工程師的技術" />
+<meta property="og:description" content="工程師的技術" />
+<link rel="canonical" href="http://localhost:4000/zh-tw/engineering/tech_stack" />
+<meta property="og:url" content="http://localhost:4000/zh-tw/engineering/tech_stack" />
+<meta property="og:site_name" content="Zopshop" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="技術架構" />
+<script type="application/ld+json">
+{"headline":"技術架構","url":"http://localhost:4000/zh-tw/engineering/tech_stack","description":"工程師的技術","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="#157878" name="theme-color">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://static.wixstatic.com/media/877134_2808539891304c078530373769485c0d%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/877134_2808539891304c078530373769485c0d%7Emv2.png" rel="shortcut icon" type="image/png"> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="/assets/img/site.webmanifest">
+    <!-- <link rel="mask-icon" href="/assets/img/safari-pinned-tab.svg" color="#2d89ef"> -->
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="msapplication-config" content="/assets/img/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Compiled and minified CSS -->
+    <script crossorigin="anonymous" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css?v=HEAD">
+
+  </head>
+
+  <body>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          xfbml: true,
+          version: 'v9.0'
+        });
+      };
+
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat" attribution="setup_tool" page_id="108024397337673">
+    </div>
+    <header class="page-header" role="banner">
+      <div class="nav-but">
+        <a class="sidenav-trigger top-nav" data-target="slide-out" href="#">
+          <i class="material-icons">menu</i>
+        </a>
+        <a class="dropdown-trigger btn droplang nav-droplang" data-target="dropdown2" href="#">
+          <i class="material-icons">language</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul class="dropdown-content" id="dropdown2">
+          
+  
+  <li lang="en" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/en/engineering/tech_stack" class="lang" aria-current="true">English</a>
+      
+    
+  </li>
+
+  
+  <li lang="id" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/id/engineering/tech_stack" class="lang" aria-current="true">Bahasa Indonesia</a>
+      
+    
+  </li>
+
+  
+  <li lang="my" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/my/engineering/tech_stack" class="lang" aria-current="true">Orang Malaysia</a>
+      
+    
+  </li>
+
+  
+  <li lang="vi" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/vi/engineering/tech_stack" class="lang" aria-current="true">Vietnamese</a>
+      
+    
+  </li>
+
+  
+  <li lang="zh-cn" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/zh-cn/engineering/tech_stack" class="lang" aria-current="true">简体</a>
+      
+    
+  </li>
+
+  
+  <li lang="zh-tw" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/zh-tw/engineering/tech_stack" class="lang" aria-current="true">繁體</a>
+      
+    
+  </li>
+
+        </ul>
+      </div>
+
+      <h1 class="project-name">技術架構</h1>
+      <h2 class="project-tagline">工程師的技術</h2>
+      
+      <a href="/zh-tw/recruit/open_positions.html" class="btn" id="header-btn">查看職缺</a>
+    </header>
+
+    <main class="main-content" id="content" role="main">
+
+      <div class="container-content">
+        <article class="maincontent"><table>
+  <tbody>
+    <tr>
+      <td>數據更新時間</td>
+      <td>2月2020年</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="整體技術架構">整體技術架構</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/zh-tw/engineering/code_styles.html">JS代碼格式風格</a></td>
+      <td><strong>Airbnb</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/qc_testing.html">JS測試架構</a></td>
+      <td><strong>Jest</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/analytics.html">使用者分析架構</a></td>
+      <td><strong>Firebase</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/db.html">資料庫架構</a></td>
+      <td><strong>Firebase</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/prod_infra.html">生產後端架構</a></td>
+      <td>Firebase, ZEIT</td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/prod_infra.html">雲端服務</a></td>
+      <td>Firebase, ZEIT</td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/prod_infra.html">生產演算架構</a></td>
+      <td><strong>Cloud Functions</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="後端">後端</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/zh-tw/engineering/backend_stack.html">後端架構</a></td>
+      <td><strong>Node.js</strong></td>
+    </tr>
+    <tr>
+      <td>後端網頁架構</td>
+      <td><strong>Express.js</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="前端">前端</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/zh-tw/engineering/frontend_stack.html">前端畫面架構</a></td>
+      <td><strong>React.js</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/ssr.html">前端SSR架構</a></td>
+      <td><strong>Next.js</strong></td>
+    </tr>
+    <tr>
+      <td>前端持續性資料架構</td>
+      <td><strong>Redux</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/ssr.html">前端表格架構</a></td>
+      <td><strong>Chart.js</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/ui_design.html">UI設計架構</a></td>
+      <td><strong>Material UI</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="手機">手機</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/zh-tw/engineering/amp.html">前端AMP架構</a></td>
+      <td><strong>Next.js</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/pwa.html">前端PWA架構</a></td>
+      <td><strong>React.js</strong></td>
+    </tr>
+    <tr>
+      <td><a href="/zh-tw/engineering/mobile.html">手機前端畫面架構</a></td>
+      <td><strong>ReactNative</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br></p>
+
+</article>
+        <div class="side-navbar side-navbar-down">
+          <div class="nav-list">
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/index" class="nav">介紹</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/team" class="nav"><img class="emoji" title=":couple:" alt=":couple:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f46b.png" height="20" width="20"> 團隊</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/product" class="nav"><img class="emoji" title=":building_construction:" alt=":building_construction:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3d7.png" height="20" width="20"> 產品</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/announcements" class="nav"><img class="emoji" title=":new:" alt=":new:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f195.png" height="20" width="20"> 最新公告</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/FAQ" class="nav"><img class="emoji" title=":interrobang:" alt=":interrobang:" src="https://github.githubassets.com/images/icons/emoji/unicode/2049.png" height="20" width="20"> 常見問題</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/principles/principles" class="nav">公司理念</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/principles/expectations" class="nav"><img class="emoji" title=":100:" alt=":100:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4af.png" height="20" width="20"> 團隊期望</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/communication" class="nav">有效溝通</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/team_dynamics" class="nav">團隊互動</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/meetings" class="nav">會議流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/written_communication" class="nav">書面交流</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/deliverables" class="nav">執行SOP</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/external_meetings" class="nav">對外會議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/principles/strategy" class="nav"><img class="emoji" title=":chart_with_upwards_trend:" alt=":chart_with_upwards_trend:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c8.png" height="20" width="20"> 執行策略</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/agile" class="nav">敏捷流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/remote" class="nav">遠端工作</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/inexperience" class="nav">職場新人</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/principles/management" class="nav"><img class="emoji" title=":pushpin:" alt=":pushpin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cc.png" height="20" width="20"> 管理方式</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/areas_responsibility" class="nav">責任分配</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/management_kpi_okr" class="nav">管理KPI及OKR</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/people/people" class="nav">人資管理</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/compensation" class="nav"><img class="emoji" title=":moneybag:" alt=":moneybag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png" height="20" width="20"> 績效薪資制度</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/engineering_level" class="nav">全職工程師薪水</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/designer_level" class="nav">全職設計師薪水</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/projectbased_level" class="nav">特案兼職費用</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/benefits" class="nav"><img class="emoji" title=":cookie:" alt=":cookie:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f36a.png" height="20" width="20"> 員工福利</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/team_events" class="nav">團隊活動</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/learning_training" class="nav"><img class="emoji" title=":computer:" alt=":computer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png" height="20" width="20"> 學習培訓</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/fullstack_training" class="nav">全端培訓計劃</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/online_resources" class="nav">線上資源</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/bookclub" class="nav">讀書會</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/policy_legal" class="nav"><img class="emoji" title=":alarm_clock:" alt=":alarm_clock:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f0.png" height="20" width="20"> 規範及合約</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/nda" class="nav">保密協議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/ra" class="nav">聘用協議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/ea" class="nav">員工協議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/work_hours" class="nav">工作時間</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/pto" class="nav">給假原則</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/workplace_policy" class="nav">職場性騷擾政策</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/reimbursement_policy" class="nav">補貼規範</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/onboarding" class="nav"><img class="emoji" title=":memo:" alt=":memo:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png" height="20" width="20"> 入職流程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/general_performance_review" class="nav"><img class="emoji" title=":fire:" alt=":fire:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png" height="20" width="20"> 績效評估</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/recruit/recruit" class="nav">徵才</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/application_data" class="nav"><img class="emoji" title=":bar_chart:" alt=":bar_chart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ca.png" height="20" width="20"> 申請數據</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/open_positions" class="nav"><img class="emoji" title=":handshake:" alt=":handshake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" height="20" width="20"> 職缺</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_fullstackdev" class="nav">全端軟體工程師</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_frontenddev" class="nav">前端軟體工程師</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_backenddev" class="nav">後端軟體工程師</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_projectbased" class="nav">全端軟體工程師(特案)</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_designer" class="nav">網頁設計師</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_seo" class="nav">SEO/SEM專員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_growthhacker" class="nav">數位行銷專案人員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_contentmarketing" class="nav">數位行銷內容製作</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_adspecialist" class="nav">付費廣告行銷專員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_pm_senior" class="nav">資深產品經理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_pm_junior" class="nav">初階產品經理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_aiml_junior" class="nav">AI,ML初階專員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_aiml_senior" class="nav">AI,ML高階專員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_mba" class="nav">MBA實習生</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_exec_assistant" class="nav">行政助理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/interview_process_designer" class="nav"><img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20"> 設計師面試過程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/exam_designer" class="nav">設計師測驗</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/interview_process" class="nav"><img class="emoji" title=":hourglass_flowing_sand:" alt=":hourglass_flowing_sand:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f3.png" height="20" width="20"> 工程師面試過程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/survey" class="nav">申請職缺問卷（5分鐘）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/takehome" class="nav">選項A：加速申請 - 線上測驗（2.5小時）</a>
+                        
+                        
+                          <i class="material-icons">keyboard_arrow_right</i>
+                        
+                      </b>
+                      
+                        <ul>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/webdev" class="nav">線上測驗指南</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/exam_rubric" class="nav">測驗分數評估</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/sample_fullstackdev" class="nav">全端測驗樣本</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/sample_frontenddev" class="nav">前端測驗樣本</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/sample_backenddev" class="nav">後端測驗樣本</a>
+                                
+                              </b>
+                            </li>
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/whiteboard" class="nav">選項B：傳統方案 - 實際白板考試（2天）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/referencecheck" class="nav">選項C：資歷查核 - 取代技術測驗（5分鐘）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/exam_researcher" class="nav"><img class="emoji" title=":microscope:" alt=":microscope:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f52c.png" height="20" width="20"> 研究員面試過程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/exam_qaqc" class="nav"><img class="emoji" title=":wrench:" alt=":wrench:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f527.png" height="20" width="20"> 測試工程師面試過程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/onboarding" class="nav"><img class="emoji" title=":bulb:" alt=":bulb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" height="20" width="20"> 入職訓練</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/women" class="nav"><img class="emoji" title=":handshake:" alt=":handshake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" height="20" width="20"> 性別平等就業機會</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/open_sourced" class="nav"><img class="emoji" title=":unlock:" alt=":unlock:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f513.png" height="20" width="20"> 源貢獻</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/students" class="nav"><img class="emoji" title=":hatched_chick:" alt=":hatched_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f425.png" height="20" width="20"> 實習生計劃 : 學生及職場新人</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/referral" class="nav"><img class="emoji" title=":moneybag:" alt=":moneybag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png" height="20" width="20"> 推薦獎金</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/engineering/engineering" class="nav">工程開發</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/onboarding" class="nav"><img class="emoji" title=":hammer:" alt=":hammer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f528.png" height="20" width="20"> 工程師入職流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/breaking_changes" class="nav">破壞性更改</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/git_rules" class="nav">Git管理規範</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/tech_stack" class="active thisa"><img class="emoji" title=":zap:" alt=":zap:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png" height="20" width="20"> 技術架構</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/prod_infra" class="nav">生產架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/analytics" class="nav">使用者分析</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/desktop_stack" class="nav">桌面程式架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/realtime_stack" class="nav">即時網路架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/devenv" class="nav">開發環境</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/frontend_stack" class="nav"><img class="emoji" title=":hamburger:" alt=":hamburger:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f354.png" height="20" width="20"> 前端架構</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/ssr" class="nav">SSR前端架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/amp" class="nav">AMP前端架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/pwa" class="nav">PWA前端架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/mobile" class="nav">手機應用程式架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/ui_design" class="nav">UI設計原則</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/html5" class="nav">HTML5架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/internationalization" class="nav">國際化</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/math" class="nav">數學公式前端</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/backend_stack" class="nav"><img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20"> 後端架構</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/referral" class="nav">使用者轉介架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/db" class="nav">資料庫架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/filtering" class="nav">過濾資料</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/velocity_work" class="nav"><img class="emoji" title=":rocket:" alt=":rocket:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" height="20" width="20"> 工作速率</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/product_cycle" class="nav">產品開發流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/scrum_meeting" class="nav">計畫Scrum會議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/daily_scrum" class="nav">每日報告</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/issue_tracking" class="nav">問題追中</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/time_tracking" class="nav">紀錄工作時間</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/performance_review" class="nav"><img class="emoji" title=":thumbsup:" alt=":thumbsup:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" height="20" width="20"> 績效評估</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/code_styles" class="nav"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"> 程式代碼規範</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/code_review" class="nav"><img class="emoji" title=":bangbang:" alt=":bangbang:" src="https://github.githubassets.com/images/icons/emoji/unicode/203c.png" height="20" width="20"> 程式代碼審核</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/qc_testing" class="nav"><img class="emoji" title=":warning:" alt=":warning:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" height="20" width="20"> 品質管制及測試</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/js_testing" class="nav">JS測試</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/frontend_testing" class="nav">前端測試</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/devops_sre" class="nav"><img class="emoji" title=":muscle:" alt=":muscle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png" height="20" width="20"> 網頁可靠性</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/product/product" class="nav">產品研發流程</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/product/design" class="nav"><img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20"> 設計流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/product/color" class="nav"><img class="emoji" title=":rainbow:" alt=":rainbow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f308.png" height="20" width="20"> 顏色</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/product/font" class="nav"><img class="emoji" title=":a:" alt=":a:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f170.png" height="20" width="20"> 字體</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/product/style_guide" class="nav"><img class="emoji" title=":balloon:" alt=":balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f388.png" height="20" width="20"> 設計表</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/product/roadmap" class="nav"><img class="emoji" title=":oncoming_automobile:" alt=":oncoming_automobile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f698.png" height="20" width="20"> 產品研發流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/product/edtech" class="nav">教育科技</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/growth/growth" class="nav">業務行銷流程</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/growth/seo" class="nav"><img class="emoji" title=":rocket:" alt=":rocket:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" height="20" width="20"> 搜尋引擎最佳化</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+
+</div>
+        </div>
+      </div>
+
+
+      <footer class="site-footer">
+        <span class="site-footer-owner">
+          
+          <b></b>
+        </span>
+        <span class="site-footer-owner">
+          
+          全遠端孵化新創
+          <a style="text-decoration: none"></a>
+        </span>
+        <span class="site-footer-owner">
+          
+          追蹤我們
+          |
+          <a href="https://www.facebook.com/FatGoat-109039754777179" target="_blank">Facebook</a>
+          <!-- | -->
+          <!-- <a href="https://www.instagram.com/myfatbull/" style="text-decoration: none" target="_blank">Instagram</a> -->
+          |
+          <a href="https://www.linkedin.com/company/fatgoat" target="_blank">LinkedIn</a>
+          |
+          <a href="https://github.com/FatGoatPublic" style="text-decoration: none" target="_blank">GitHub</a>
+        </span>
+        <span class="site-footer-owner">
+          
+          <a href="mailto:hr@avancevl.com">聯絡我們</a>
+        </span>
+        <br>
+        <span class="site-footer-owner">
+          <a href="https://github.com/AvanceVentureLab/cms-handbook">cms-handbook</a>
+          is maintained by
+          <a href="https://github.com/AvanceVentureLab">AvanceVentureLab</a>.</span>
+        <span class="site-footer-credits">This page was generated by
+          <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+    <!--mobile nav list-->
+    <nav class="sidenav sidenav-style side-navbar-down" id="slide-out">
+      <div class="sidenav-header">
+        <a class="dropdown-trigger btn droplang" data-target="dropdown1" href="#">
+          <i class="material-icons">language</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul class="dropdown-content" id="dropdown1">
+          
+  
+  <li lang="en" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/en/engineering/tech_stack" class="lang" aria-current="true">English</a>
+      
+    
+  </li>
+
+  
+  <li lang="id" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/id/engineering/tech_stack" class="lang" aria-current="true">Bahasa Indonesia</a>
+      
+    
+  </li>
+
+  
+  <li lang="my" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/my/engineering/tech_stack" class="lang" aria-current="true">Orang Malaysia</a>
+      
+    
+  </li>
+
+  
+  <li lang="vi" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/vi/engineering/tech_stack" class="lang" aria-current="true">Vietnamese</a>
+      
+    
+  </li>
+
+  
+  <li lang="zh-cn" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/zh-cn/engineering/tech_stack" class="lang" aria-current="true">简体</a>
+      
+    
+  </li>
+
+  
+  <li lang="zh-tw" class="language-plaintext highlighter-rouge">
+
+    
+      
+      
+        
+        
+        <a href="/zh-tw/engineering/tech_stack" class="lang" aria-current="true">繁體</a>
+      
+    
+  </li>
+
+        </ul>
+      </div>
+      <div class="nav-list">
+        
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/index" class="nav">介紹</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/team" class="nav"><img class="emoji" title=":couple:" alt=":couple:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f46b.png" height="20" width="20"> 團隊</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/product" class="nav"><img class="emoji" title=":building_construction:" alt=":building_construction:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3d7.png" height="20" width="20"> 產品</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/announcements" class="nav"><img class="emoji" title=":new:" alt=":new:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f195.png" height="20" width="20"> 最新公告</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/FAQ" class="nav"><img class="emoji" title=":interrobang:" alt=":interrobang:" src="https://github.githubassets.com/images/icons/emoji/unicode/2049.png" height="20" width="20"> 常見問題</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/principles/principles" class="nav">公司理念</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/principles/expectations" class="nav"><img class="emoji" title=":100:" alt=":100:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4af.png" height="20" width="20"> 團隊期望</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/communication" class="nav">有效溝通</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/team_dynamics" class="nav">團隊互動</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/meetings" class="nav">會議流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/written_communication" class="nav">書面交流</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/deliverables" class="nav">執行SOP</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/external_meetings" class="nav">對外會議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/principles/strategy" class="nav"><img class="emoji" title=":chart_with_upwards_trend:" alt=":chart_with_upwards_trend:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c8.png" height="20" width="20"> 執行策略</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/agile" class="nav">敏捷流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/remote" class="nav">遠端工作</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/inexperience" class="nav">職場新人</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/principles/management" class="nav"><img class="emoji" title=":pushpin:" alt=":pushpin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cc.png" height="20" width="20"> 管理方式</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/areas_responsibility" class="nav">責任分配</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/principles/management_kpi_okr" class="nav">管理KPI及OKR</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/people/people" class="nav">人資管理</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/compensation" class="nav"><img class="emoji" title=":moneybag:" alt=":moneybag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png" height="20" width="20"> 績效薪資制度</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/engineering_level" class="nav">全職工程師薪水</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/designer_level" class="nav">全職設計師薪水</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/projectbased_level" class="nav">特案兼職費用</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/benefits" class="nav"><img class="emoji" title=":cookie:" alt=":cookie:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f36a.png" height="20" width="20"> 員工福利</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/team_events" class="nav">團隊活動</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/learning_training" class="nav"><img class="emoji" title=":computer:" alt=":computer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png" height="20" width="20"> 學習培訓</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/fullstack_training" class="nav">全端培訓計劃</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/online_resources" class="nav">線上資源</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/bookclub" class="nav">讀書會</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/policy_legal" class="nav"><img class="emoji" title=":alarm_clock:" alt=":alarm_clock:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f0.png" height="20" width="20"> 規範及合約</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/nda" class="nav">保密協議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/ra" class="nav">聘用協議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/ea" class="nav">員工協議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/work_hours" class="nav">工作時間</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/pto" class="nav">給假原則</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/workplace_policy" class="nav">職場性騷擾政策</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/people/reimbursement_policy" class="nav">補貼規範</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/onboarding" class="nav"><img class="emoji" title=":memo:" alt=":memo:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png" height="20" width="20"> 入職流程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/people/general_performance_review" class="nav"><img class="emoji" title=":fire:" alt=":fire:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png" height="20" width="20"> 績效評估</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/recruit/recruit" class="nav">徵才</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/application_data" class="nav"><img class="emoji" title=":bar_chart:" alt=":bar_chart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ca.png" height="20" width="20"> 申請數據</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/open_positions" class="nav"><img class="emoji" title=":handshake:" alt=":handshake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" height="20" width="20"> 職缺</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_fullstackdev" class="nav">全端軟體工程師</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_frontenddev" class="nav">前端軟體工程師</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_backenddev" class="nav">後端軟體工程師</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_projectbased" class="nav">全端軟體工程師(特案)</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_designer" class="nav">網頁設計師</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_seo" class="nav">SEO/SEM專員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_growthhacker" class="nav">數位行銷專案人員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_contentmarketing" class="nav">數位行銷內容製作</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_adspecialist" class="nav">付費廣告行銷專員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_pm_senior" class="nav">資深產品經理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_pm_junior" class="nav">初階產品經理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_aiml_junior" class="nav">AI,ML初階專員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_aiml_senior" class="nav">AI,ML高階專員</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_mba" class="nav">MBA實習生</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/jd_exec_assistant" class="nav">行政助理</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/interview_process_designer" class="nav"><img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20"> 設計師面試過程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/exam_designer" class="nav">設計師測驗</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/interview_process" class="nav"><img class="emoji" title=":hourglass_flowing_sand:" alt=":hourglass_flowing_sand:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f3.png" height="20" width="20"> 工程師面試過程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/survey" class="nav">申請職缺問卷（5分鐘）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/takehome" class="nav">選項A：加速申請 - 線上測驗（2.5小時）</a>
+                        
+                        
+                          <i class="material-icons">keyboard_arrow_right</i>
+                        
+                      </b>
+                      
+                        <ul>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/webdev" class="nav">線上測驗指南</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/exam_rubric" class="nav">測驗分數評估</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/sample_fullstackdev" class="nav">全端測驗樣本</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/sample_frontenddev" class="nav">前端測驗樣本</a>
+                                
+                              </b>
+                            </li>
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                              <b>
+                                
+                                  <a href="/zh-tw/recruit/sample_backenddev" class="nav">後端測驗樣本</a>
+                                
+                              </b>
+                            </li>
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/whiteboard" class="nav">選項B：傳統方案 - 實際白板考試（2天）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/recruit/referencecheck" class="nav">選項C：資歷查核 - 取代技術測驗（5分鐘）</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/exam_researcher" class="nav"><img class="emoji" title=":microscope:" alt=":microscope:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f52c.png" height="20" width="20"> 研究員面試過程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/exam_qaqc" class="nav"><img class="emoji" title=":wrench:" alt=":wrench:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f527.png" height="20" width="20"> 測試工程師面試過程</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/onboarding" class="nav"><img class="emoji" title=":bulb:" alt=":bulb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" height="20" width="20"> 入職訓練</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/women" class="nav"><img class="emoji" title=":handshake:" alt=":handshake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" height="20" width="20"> 性別平等就業機會</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/open_sourced" class="nav"><img class="emoji" title=":unlock:" alt=":unlock:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f513.png" height="20" width="20"> 源貢獻</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/students" class="nav"><img class="emoji" title=":hatched_chick:" alt=":hatched_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f425.png" height="20" width="20"> 實習生計劃 : 學生及職場新人</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/recruit/referral" class="nav"><img class="emoji" title=":moneybag:" alt=":moneybag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png" height="20" width="20"> 推薦獎金</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/engineering/engineering" class="nav">工程開發</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/onboarding" class="nav"><img class="emoji" title=":hammer:" alt=":hammer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f528.png" height="20" width="20"> 工程師入職流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/breaking_changes" class="nav">破壞性更改</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/git_rules" class="nav">Git管理規範</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/tech_stack" class="active thisa"><img class="emoji" title=":zap:" alt=":zap:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png" height="20" width="20"> 技術架構</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/prod_infra" class="nav">生產架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/analytics" class="nav">使用者分析</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/desktop_stack" class="nav">桌面程式架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/realtime_stack" class="nav">即時網路架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/devenv" class="nav">開發環境</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/frontend_stack" class="nav"><img class="emoji" title=":hamburger:" alt=":hamburger:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f354.png" height="20" width="20"> 前端架構</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/ssr" class="nav">SSR前端架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/amp" class="nav">AMP前端架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/pwa" class="nav">PWA前端架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/mobile" class="nav">手機應用程式架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/ui_design" class="nav">UI設計原則</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/html5" class="nav">HTML5架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/internationalization" class="nav">國際化</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/math" class="nav">數學公式前端</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/backend_stack" class="nav"><img class="emoji" title=":cow:" alt=":cow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png" height="20" width="20"> 後端架構</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/referral" class="nav">使用者轉介架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/db" class="nav">資料庫架構</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/filtering" class="nav">過濾資料</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/velocity_work" class="nav"><img class="emoji" title=":rocket:" alt=":rocket:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" height="20" width="20"> 工作速率</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/product_cycle" class="nav">產品開發流程</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/scrum_meeting" class="nav">計畫Scrum會議</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/daily_scrum" class="nav">每日報告</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/issue_tracking" class="nav">問題追中</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/time_tracking" class="nav">紀錄工作時間</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/performance_review" class="nav"><img class="emoji" title=":thumbsup:" alt=":thumbsup:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" height="20" width="20"> 績效評估</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/code_styles" class="nav"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"> 程式代碼規範</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/code_review" class="nav"><img class="emoji" title=":bangbang:" alt=":bangbang:" src="https://github.githubassets.com/images/icons/emoji/unicode/203c.png" height="20" width="20"> 程式代碼審核</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/qc_testing" class="nav"><img class="emoji" title=":warning:" alt=":warning:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" height="20" width="20"> 品質管制及測試</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/js_testing" class="nav">JS測試</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/engineering/frontend_testing" class="nav">前端測試</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/engineering/devops_sre" class="nav"><img class="emoji" title=":muscle:" alt=":muscle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png" height="20" width="20"> 網頁可靠性</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/product/product" class="nav">產品研發流程</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/product/design" class="nav"><img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20"> 設計流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/product/color" class="nav"><img class="emoji" title=":rainbow:" alt=":rainbow:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f308.png" height="20" width="20"> 顏色</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/product/font" class="nav"><img class="emoji" title=":a:" alt=":a:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f170.png" height="20" width="20"> 字體</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/product/style_guide" class="nav"><img class="emoji" title=":balloon:" alt=":balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f388.png" height="20" width="20"> 設計表</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/product/roadmap" class="nav"><img class="emoji" title=":oncoming_automobile:" alt=":oncoming_automobile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f698.png" height="20" width="20"> 產品研發流程</a>
+                
+                
+                  <i class="material-icons">keyboard_arrow_right</i>
+                
+              </b>
+              
+                <ul>
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      <b>
+                        
+                          <a href="/zh-tw/product/edtech" class="nav">教育科技</a>
+                        
+                        
+                      </b>
+                      
+                    </li>
+                  
+                </ul>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+    <div class="navs">
+      <b>
+        
+        
+        
+        
+        
+        
+        
+          <a href="/zh-tw/growth/growth" class="nav">業務行銷流程</a>
+        
+        <i class="material-icons">keyboard_arrow_right</i>
+      </b>
+
+      
+        
+          <ul>
+            
+            
+            
+            
+            
+            
+            <li>
+              <b>
+                
+                  <a href="/zh-tw/growth/seo" class="nav"><img class="emoji" title=":rocket:" alt=":rocket:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" height="20" width="20"> 搜尋引擎最佳化</a>
+                
+                
+              </b>
+              
+            </li>
+          </ul>
+        
+      
+    </div>
+  
+
+
+      </div>
+    </nav>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-140600686-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script>
+            //select langauge
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.dropdown-trigger');
+                var instances = M.Dropdown.init(elems);
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('.sidenav');
+                var instances = M.Sidenav.init(elems);
+            });
+            /**side main menu**/
+            $(function(){
+
+                $('.side-navbar-down .nav-list ul li a.active').parents('ul').siblings("b").find('a').addClass('active');
+                $('.side-navbar-down .nav-list ul li a.active').parents('ul').addClass('active');
+                // $('.side-navbar-down .nav-list ul li a.active').parents('.navs').addClass('active');
+                $('.side-navbar-down > .nav-list > .navs > b > a.active').parents('.navs').addClass('active');
+
+                $('.side-navbar-down .nav-list .navs.active').show(function(){
+                    $(this).children('ul').show();
+                    var this_i = $(this).children('b').find("i");
+                    $(this_i).text() == "keyboard_arrow_right" ? $(this_i).text('keyboard_arrow_down').css({color:"#0030DF"}) : $(this_i).text('keyboard_arrow_right').css({color:"#363636"});
+                    $(this).children("ul.active").show(function(){
+                        $(this).find("ul").show();
+                        var this_i2 = $(this).find("ul").siblings("b").find("i");
+                        for (let index = 0; index < this_i2.length; index++) {
+                          let element = this_i2[index];
+                          $(element).text() == "keyboard_arrow_right" ? $(element).text('keyboard_arrow_down').css({color:"#0030DF"}) : $(element).text('keyboard_arrow_right').css({color:"#363636"});
+                        }
+                    });
+
+                })
+            });
+            $('.side-navbar-down .nav-list a.thisa').click(function(){
+              event.preventDefault();
+              $(this).parent().siblings("ul").toggle( "slow");
+              $(this).siblings("i").text() == "keyboard_arrow_right" ? $(this).siblings("i").text('keyboard_arrow_down').css({color:"#0030DF"}) : $(this).siblings("i").text('keyboard_arrow_right').css({color:"#363636"});
+              // $(this).siblings("i").toggle('slow');
+            });
+            $('.side-navbar-down .nav-list b i').click(function(event){
+                event.preventDefault();
+                $(this).text() == "keyboard_arrow_right" ? $(this).text('keyboard_arrow_down').css({color:"#0030DF"}) : $(this).text('keyboard_arrow_right').css({color:"#363636"});
+                $(this).parent().siblings("ul").toggle( "slow");
+            });
+            $('.side-navbar-down .nav-list ul i').click(function(event){
+                event.preventDefault();
+                $(this).siblings("ul").toggle( "slow");
+            });
+            $('table').addClass('responsive-table');
+        </script>
+  </body>
+</html>
