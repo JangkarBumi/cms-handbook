@@ -2,7 +2,7 @@
 layout: default
 title: PerfectScore Handbook
 lang: en
-description: All Remote Team
+description: All Remote Teamn
 ---
 
 ## All Remote Team

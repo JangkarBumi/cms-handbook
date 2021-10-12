@@ -2,7 +2,7 @@
 layout: default
 title: GirlFriday Handbook
 lang: en
-description: All Remote Team
+description: All Remote Teamn
 ---
 
 ## All Remote Team

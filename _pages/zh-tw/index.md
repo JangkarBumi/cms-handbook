@@ -2,7 +2,7 @@
 layout: default
 title: product_name_var Handbook
 lang: zh-tw
-description: All Remote Team
+description: All Remote Teamn
 ---
 
 ## All Remote Team
