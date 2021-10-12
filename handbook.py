@@ -301,7 +301,7 @@ for h in handbooks:
     filedata = file.read()
 
 # Replace the target string
-  filedata = filedata.replace('[[product_name]]', h['product_name'])
+  filedata = filedata.replace('product_name_var', h['product_name'])
 
 # Write the file out again
   with open('./'+h['path']+'/_default/index.md', 'w') as file:

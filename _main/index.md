@@ -1,6 +1,6 @@
 ---
 layout: default
-title: [[product_name]] Handbook
+title: product_name_var Handbook
 lang: en
 description: All Remote Team
 ---

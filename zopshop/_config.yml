@@ -1,6 +1,6 @@
 URL_FACEBOOK: https://www.facebook.com/Zop-Shop-102897075304937
 URL_GITHUB: https://github.com/avancevl/avancevl.github.io
-URL_GITHUB_MAIN: https://github.com/orgs/ZopshopDev/dashboard
+URL_GITHUB_MAIN: https://github.com/ZopshopDev
 URL_INSTAGRAM: https://www.instagram.com/myfatbull/
 URL_LANDING: https://www.myzopshop.com/
 URL_LINKEDIN: https://www.linkedin.com/company/my-zop-shop
@@ -78,6 +78,6 @@ sass:
   sass_dir: _sass
 splash_btn_text: "\u67E5\u770B\u8077\u7F3A"
 theme: jekyll-theme-cayman
-title: Zopshop
+title: ZopShop
 user_d: D
 user_g: G

@@ -2,12 +2,12 @@
 layout: default
 title: Stride Handbook
 lang: en
-description: For All Remote Teams
+description: All Remote Team
 ---
 
-## All Remote Team, Incubate New Ideas
+## All Remote Team
 
-We incubate, accelerate, and implement ideas that our team create internally.
+We work anywhere in the world, in any time zone. Non-English speakers welcomed.
 
 <br>
 
@@ -22,16 +22,6 @@ We believe in radical transparency, where the best ideas win. As such, how we ru
 We want to work with talented individuals and are **always actively hiring**.
 
 [Explore opportunities]({{ site.baseurl }}/{{ page.lang }}/recruit/recruit.html){: .btn#page-btn}
-
-<br>
-
-## Community
-
-Help us support the remote, startup developer communites by following:
-
-- [Remote Developers Jobs :palm_tree:](https://www.linkedin.com/groups/10525064/){:target="\_blank"}
-  - [LinkedIn](https://www.linkedin.com/groups/10525064/){:target="\_blank"}
-  - [Facebook](https://www.facebook.com/groups/489046765360247/){:target="\_blank"}
 
 <br>
 
