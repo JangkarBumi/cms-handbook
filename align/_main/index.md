@@ -2,7 +2,7 @@
 layout: default
 title: Fatgoat Handbook
 lang: en
-description: For All Remote Teams
+description: For All Remote Teamss
 ---
 
 ## All Remote Team, Incubate New Ideas
